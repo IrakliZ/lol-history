@@ -1,0 +1,33 @@
+h3 Results
+table.table.table-striped
+    thead
+        tr
+            th Champion
+            th Date
+            th Duration
+            th Kills
+            th Assists
+            th Deaths
+            th Champion Level
+            th Damage Dealth
+    tbody
+        each item in data
+            tr
+                td
+                    = item.participants[0].championId
+                td
+                    - var d = new Date(0)
+                    - d.setUTCSeconds(item.matchCreation)
+                    = d.toDateString()
+                td
+                    = parseInt(item.matchDuration/60) + ":" + item.matchDuration % 60
+                td
+                    = item.participants[0].stats.kills
+                td
+                    = item.participants[0].stats.assists
+                td
+                    = item.participants[0].stats.deaths
+                td
+                    = item.participants[0].stats.champLevel
+                td
+                    = item.participants[0].stats.totalDamageDealtToChampions
